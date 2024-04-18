@@ -11,5 +11,5 @@ This algorithm generates, after several iterations, a resulting vector that can 
 
 Example: If I have a database provided by a bank that contains several variables from the clients and indicates, for each client, whether they are compliant or defaulting, this resulting vector can predict if a future client is going to be (with a certain probability) compliant or defaulting.
 
-The name is 'genetic' because I will consider a vector to be a chromosome.
+The name is 'genetic' because I will consider a vector to be a chromosome. This vector, initially random, will evolve across generations (iterations) by reproducing and mutating.
 
