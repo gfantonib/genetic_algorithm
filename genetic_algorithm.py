@@ -11,6 +11,7 @@ from source._06_mutate_the_three_newborns import mutate_the_three_newborns
 from source._07_calculate_three_newborn_fitness import calculate_three_newborn_fitness
 from source._08_select_new_lineage import select_new_lineage
 
+i_max = int(input("Number of iteration: "))
 
 # Read Excel file into a DataFrame.
 df = pd.read_excel('data/data.xlsx')
@@ -24,7 +25,7 @@ df_current_lineage = create_firstborns(nbr_operatives_columns)
 print(f"df_current_lineage before iteration:\n{df_current_lineage}\n")
 
 i = 0
-while (i < 1000):
+while (i < i_max):
 
 	df_current_lineage_fitness = calculate_chromosomes_fitnes(df_op, df_current_lineage, df_ref_column, total_A, total_I)
 	if i == 0:
