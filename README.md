@@ -13,3 +13,6 @@ Example: If I have a database provided by a bank that contains several variables
 
 The name is 'genetic' because I will consider a vector to be a chromosome. This chromosome, initially random, will evolve across generations (iterations) by reproducing and mutating.
 
+---
+
+This implementation is based on lectures by Professor Ricieri from ITA on the topic of Big Data and Machine Learning, presented at the [Prandiano Museu da Matemática](https://www.prandiano.com.br/).
