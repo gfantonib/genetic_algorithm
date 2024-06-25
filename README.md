@@ -15,4 +15,4 @@ The name is 'genetic' because I will consider a vector to be a chromosome. This 
 
 ---
 
-This implementation is based on lectures by Professor Ricieri from ITA on the topic of Big Data and Machine Learning, presented at the *Museu da Matemática*.
+This implementation was inspired by lectures given by Professor Ricieri from ITA on the topic of Big Data and Machine Learning, presented at *Museu da Matemática*.
