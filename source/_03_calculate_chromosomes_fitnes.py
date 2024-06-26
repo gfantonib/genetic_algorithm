@@ -16,13 +16,13 @@ def calculate_chromosomes_fitnes(df_op, df_current_lineage, df_ref_column, total
 		i = i + 1
 
 	# Create chromo reference: a DataFrame that contain
-	# 'A' if number > 0 and 'I' if number < 0.
+	# 'green' if number > 0 and 'red' if number < 0.
 	df_current_lineage_fitness = df_current_lineage_fitness.applymap(lambda x: 'green' if x > 0 else 'red')
 	df_current_lineage_fitness = df_current_lineage_fitness.apply(chromo_count_matches, ref_column=df_ref_column)
 	fitness_values = df_current_lineage_fitness.apply(fitness_calculation, args=(total_green, total_red))
 	df_current_lineage_fitness.loc['fitness'] = fitness_values
 
-	# Removing obsolete A and I rows
+	# Removing obsolete green and red rows
 	i_remove = ['right green', 'right red']
 	df_current_lineage_fitness = df_current_lineage_fitness.drop(i_remove)
 	return df_current_lineage_fitness
