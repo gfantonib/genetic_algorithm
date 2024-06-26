@@ -2,7 +2,7 @@
 
 import pandas as pd
 
-from source._01_oil_database import oil_database
+from source._01_oil_database import oil_database, init_variables
 from source._02_create_firstborns import create_firstborns
 from source._03_calculate_chromosomes_fitnes import calculate_chromosomes_fitnes
 from source._04_elect_father_and_mother import elect_father_and_mother
@@ -14,12 +14,17 @@ from source._08_select_new_lineage import select_new_lineage
 i_max = int(input("Number of iteration: "))
 
 # Read Excel file into a DataFrame.
-df = pd.read_excel('data/data.xlsx')
+# df = pd.read_excel('data/data.xlsx')
+
+# Import titanic train data
+df = pd.read_csv('data/oiled_titanic_data_train.csv')
 
 # Set the seed for reproducibility
 # np.random.seed(40)
 
-df_op, df_ref_column, total_green, total_red, nbr_operatives_columns = oil_database(df)
+# df_op, df_ref_column, total_green, total_red, nbr_operatives_columns = oil_database(df)
+df_op, df_ref_column, total_green, total_red, nbr_operatives_columns = init_variables(df)
+
 df_current_lineage = create_firstborns(nbr_operatives_columns)
 
 print(f"df_current_lineage before iteration:\n{df_current_lineage}\n")
@@ -39,5 +44,6 @@ while (i < i_max):
 	
 	i = i + 1
 
+df_current_lineage.to_pickle("df_current_lineage.pkl")
 print(f"df_current_lineage after iteration:\n{df_current_lineage}\n")
 print(f"df_current_lineage_fitness after iteration:\n{df_current_lineage_fitness}\n")
