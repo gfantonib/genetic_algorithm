@@ -15,6 +15,6 @@ def select_new_lineage(df_current_lineage, df_current_lineage_fitness, df_three_
 
 	# Create new lineage by joining the two best from the newborns and the four best from the current lineage
 	df_new_lineage = pd.concat([df_current_lineage_less_two, df_three_newborn_less_one], axis=1)
-	new_columns_names = ['chromo_1', 'chromo_2', 'chromo_3', 'chromo_4', 'chromo_5', 'chromo_6']
+	new_columns_names = ['chromo 1', 'chromo 2', 'chromo 3', 'chromo 4', 'chromo 5', 'chromo 6']
 	df_new_lineage.columns = new_columns_names
 	return df_new_lineage

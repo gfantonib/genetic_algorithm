@@ -12,7 +12,7 @@ def chromo_action(row, current_chromosome, scalar):
 def chromo_count_matches(column, ref_column):
 	relative_A = ((column == 'A') & (ref_column == 'A')).sum()
 	relative_I = ((column == 'I') & (ref_column == 'I')).sum()
-	return pd.Series({'Right A': relative_A, 'Right I': relative_I})
+	return pd.Series({'right A': relative_A, 'right I': relative_I})
 
 # Calculate the fitness for all the six chromosome
 def fitness_calculation(column, total_A, total_I):
