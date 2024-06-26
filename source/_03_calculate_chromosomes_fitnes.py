@@ -2,7 +2,7 @@ import pandas as pd
 
 from source.utils import chromo_action, chromo_count_matches, fitness_calculation
 
-def calculate_chromosomes_fitnes(df_op, df_current_lineage, df_ref_column, total_A, total_I):
+def calculate_chromosomes_fitnes(df_op, df_current_lineage, df_ref_column, total_green, total_red):
 	# Iterate df_current_lineage in database.
 	i = 0
 	trash = None
@@ -17,12 +17,12 @@ def calculate_chromosomes_fitnes(df_op, df_current_lineage, df_ref_column, total
 
 	# Create chromo reference: a DataFrame that contain
 	# 'A' if number > 0 and 'I' if number < 0.
-	df_current_lineage_fitness = df_current_lineage_fitness.applymap(lambda x: 'A' if x > 0 else 'I')
+	df_current_lineage_fitness = df_current_lineage_fitness.applymap(lambda x: 'green' if x > 0 else 'red')
 	df_current_lineage_fitness = df_current_lineage_fitness.apply(chromo_count_matches, ref_column=df_ref_column)
-	fitness_values = df_current_lineage_fitness.apply(fitness_calculation, args=(total_A, total_I))
+	fitness_values = df_current_lineage_fitness.apply(fitness_calculation, args=(total_green, total_red))
 	df_current_lineage_fitness.loc['fitness'] = fitness_values
 
 	# Removing obsolete A and I rows
-	i_remove = ['right A', 'right I']
+	i_remove = ['right green', 'right red']
 	df_current_lineage_fitness = df_current_lineage_fitness.drop(i_remove)
 	return df_current_lineage_fitness

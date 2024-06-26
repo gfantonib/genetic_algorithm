@@ -19,7 +19,7 @@ df = pd.read_excel('data/data.xlsx')
 # Set the seed for reproducibility
 # np.random.seed(40)
 
-df_op, df_ref_column, total_A, total_I, nbr_operatives_columns = oil_database(df)
+df_op, df_ref_column, total_green, total_red, nbr_operatives_columns = oil_database(df)
 df_current_lineage = create_firstborns(nbr_operatives_columns)
 
 print(f"df_current_lineage before iteration:\n{df_current_lineage}\n")
@@ -27,13 +27,13 @@ print(f"df_current_lineage before iteration:\n{df_current_lineage}\n")
 i = 0
 while (i < i_max):
 
-	df_current_lineage_fitness = calculate_chromosomes_fitnes(df_op, df_current_lineage, df_ref_column, total_A, total_I)
+	df_current_lineage_fitness = calculate_chromosomes_fitnes(df_op, df_current_lineage, df_ref_column, total_green, total_red)
 	if i == 0:
 		print(f"df_current_lineage_fitness before iteration:\n{df_current_lineage_fitness}\n")
 	father_chromosome, mother_chromosome = elect_father_and_mother(df_current_lineage, df_current_lineage_fitness)
 	new_born_1, new_born_2, new_born_3 = cross_and_birth_newborns(father_chromosome, mother_chromosome, nbr_operatives_columns)
 	mutated_new_born_1, mutated_new_born_2, mutated_new_born_3 = mutate_the_three_newborns(df_current_lineage, new_born_1, new_born_2, new_born_3, nbr_operatives_columns)
-	df_three_newborn, df_three_newborn_fitness = calculate_three_newborn_fitness(df_op, df_ref_column, total_A, total_I, mutated_new_born_1, mutated_new_born_2, mutated_new_born_3)
+	df_three_newborn, df_three_newborn_fitness = calculate_three_newborn_fitness(df_op, df_ref_column, total_green, total_red, mutated_new_born_1, mutated_new_born_2, mutated_new_born_3)
 	df_new_lineage = select_new_lineage(df_current_lineage, df_current_lineage_fitness, df_three_newborn, df_three_newborn_fitness)
 	df_current_lineage = df_new_lineage
 	

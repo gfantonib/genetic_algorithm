@@ -5,12 +5,17 @@ def oil_database(df):
 	# Change column name.
 	df = df.rename(columns={'Unnamed: 19': 'reference'})
 
-	# Create column of reference with A and I.
+	# Change A to green and I to red
+	df['reference'] = df['reference'].apply(
+	lambda x: "green" if x == "A" 
+	else "red")
+
+	# Create column of reference with green and red.
 	df_ref_column = df['reference']
 
-	# Store the DataFrame reference of A's and I's in a int.
-	total_A = df["reference"].value_counts()["A"]
-	total_I = df["reference"].value_counts()["I"]
+	# Store the DataFrame reference of green's and red's in a int.
+	total_green = df["reference"].value_counts()["green"]
+	total_red = df["reference"].value_counts()["red"]
 
 	# Define operative DataFrame:
 	# with the columns from X11 to X92, without reference column.
@@ -18,4 +23,4 @@ def oil_database(df):
 
 	# Count the number of operatives columns (between X11 and X92).
 	nbr_operatives_columns = len(df_op.columns)
-	return df_op, df_ref_column, total_A, total_I, nbr_operatives_columns
+	return df_op, df_ref_column, total_green, total_red, nbr_operatives_columns

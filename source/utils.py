@@ -8,11 +8,11 @@ def chromo_action(row, current_chromosome, scalar):
 	res_sum = res_mult.sum() + scalar
 	return (res_sum)
 
-# Calculate how many A's and how many I's were correct.
+# Calculate how many green's and how many red's were correct.
 def chromo_count_matches(column, ref_column):
-	relative_A = ((column == 'A') & (ref_column == 'A')).sum()
-	relative_I = ((column == 'I') & (ref_column == 'I')).sum()
-	return pd.Series({'right A': relative_A, 'right I': relative_I})
+	relative_A = ((column == 'green') & (ref_column == 'green')).sum()
+	relative_I = ((column == 'red') & (ref_column == 'red')).sum()
+	return pd.Series({'right green': relative_A, 'right red': relative_I})
 
 # Calculate the fitness for all the six chromosome
 def fitness_calculation(column, total_A, total_I):
